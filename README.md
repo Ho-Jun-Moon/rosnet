@@ -1,6 +1,8 @@
 # rosnet
 
+
 ## 설명 / Description
+
 
 
 🇰🇷 ‘***rosnet***’ 은 ML을 적용한 causal discovery 패키지입니다. 제 개인 연구를 위해 만들었지만, 다른 사람들도 최대한 쓰기 쉽도록 설계했습니다. 
@@ -8,6 +10,7 @@
 🔠 ‘***rosnet’*** is causal discovery package applied ML . I made it for my personal study. But, it is designed to be used as easy for others as possible. 
 
 ## 목적 / Purpose
+
 
 
 **🇰🇷 이 패키지의 목적은 다음과 같습니다 :**
@@ -23,6 +26,7 @@
 ## 설치 / Installment
 
 
+
 ```python
 !pip install rosnet
 ```
@@ -32,6 +36,7 @@
 - numpy
 
 ## 사용법 / Manual
+
 
 
 🇰🇷 **이 패키지의 API는 *scikit-learn, keras* 와 거의 비슷합니다!** 
@@ -85,7 +90,7 @@ model.fit(X_train, y_train,
 
 ## 개발 기록 / Development log
 
----
+
 
 ### 0.0.1 - 22.03.26
 
