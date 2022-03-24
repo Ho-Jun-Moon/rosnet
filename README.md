@@ -2,7 +2,6 @@
 
 ## 설명 / Description
 
----
 
 🇰🇷 ‘***rosnet***’ 은 ML을 적용한 causal discovery 패키지입니다. 제 개인 연구를 위해 만들었지만, 다른 사람들도 최대한 쓰기 쉽도록 설계했습니다. 
 
@@ -10,7 +9,6 @@
 
 ## 목적 / Purpose
 
----
 
 **🇰🇷 이 패키지의 목적은 다음과 같습니다 :**
 
@@ -24,7 +22,6 @@
 
 ## 설치 / Installment
 
----
 
 ```python
 !pip install rosnet
@@ -36,7 +33,6 @@
 
 ## 사용법 / Manual
 
----
 
 🇰🇷 **이 패키지의 API는 *scikit-learn, keras* 와 거의 비슷합니다!** 
 
