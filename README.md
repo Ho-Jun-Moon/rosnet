@@ -2,9 +2,9 @@
 
   
 
-🇰🇷 ‘***rosnet***’ 은 ML을 적용한 causal discovery 패키지입니다. 제 개인 연구를 위해 만들었지만, 다른 사람들도 최대한 쓰기 쉽도록 설계했습니다. 
+🇰🇷 ‘***rosnet***’ 은 ML을 적용한 causal discovery 패키지입니다. 제 개인 연구를 위해 만들었지만, 다른 사람들도 최대한 이해하기 쉽도록 설계했습니다. 
 
-🔠 ‘***rosnet’*** is causal discovery package applied ML . I made it for my personal study. But, it is designed to be used as easy for others as possible. 
+🔠 ‘***rosnet’*** is causal discovery package applied ML . I made it for my personal study. But, it is designed to be understanded as easy for others as possible. 
   
 ## 목적 / Purpose
 
