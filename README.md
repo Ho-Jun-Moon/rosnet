@@ -1,15 +1,13 @@
 # rosnet
 
+  
 
-## 설명 / Description
+🇰🇷 ‘***rosnet***’ 은 ML을 적용한 causal discovery 패키지입니다. 제 개인 연구를 위해 만들었지만, 다른 사람들도 최대한 사용하기 쉽도록 설계했습니다. 모든 코드는 혼자서 작성했습니다. 다만, 이용자의 편의를 위해 다른 패키지의 API 설계를 따라하긴 했습니다. 
 
-
-
-🇰🇷 ‘***rosnet***’ 은 ML을 적용한 causal discovery 패키지입니다. 제 개인 연구를 위해 만들었지만, 다른 사람들도 최대한 쓰기 쉽도록 설계했습니다. 
-
-🔠 ‘***rosnet’*** is causal discovery package applied ML . I made it for my personal study. But, it is designed to be used as easy for others as possible. 
-
-## 목적 / Purpose
+🔠 ‘***rosnet’*** is causal discovery package applied ML . I made it for my personal study. But, it is designed to be used as easy for others as possible. I created all the codes by myself. However, for the user's convenience, I followed the API design of other packages.
+  
+  
+### 목적 / Purpose
 
 
 
@@ -22,8 +20,9 @@
 
 - Applying ML algorithm to Causal discovery
 - Re-engineering existing ML algorithm based on tensor
-
-## 설치 / Installment
+  
+  
+### 설치 / Installment
 
 
 
@@ -33,9 +32,10 @@
 
 **🔔 요구 패키지 / Required package**
 
-- numpy
-
-## 사용법 / Manual
+- numpy  
+  
+  
+### 사용법 / Manual
 
 
 
@@ -48,7 +48,7 @@
 - You only need to use two functions: `fit` and `predict`.
 
  
-
+  
 **예시 / Example** 
 
 ```python
@@ -87,12 +87,13 @@ model.fit(X_train, y_train,
 					validation_split = 0.2, 
 					verbose = 0)
 ```
+  
+  
+### 개발 기록 / Development log
 
-## 개발 기록 / Development log
 
 
-
-### 0.0.1 - 22.03.26
+#### 0.0.1 - 22.03.26
 
 - **rosnet.neural_network**
     - rosnet.neural_network.Sequential **add**
