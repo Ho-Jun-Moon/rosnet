@@ -8,9 +8,6 @@ class Threshold:
     self.col_ = col
   
   def get_cost(self, y, condition):
-    count_true = []
-    count_false = []
-
     cost_true = 1
     cost_false = 1
     y_true = y[condition]
@@ -22,8 +19,10 @@ class Threshold:
     tot = tot_true + tot_false
 
     for uni in np.unique(y):
-      cost_true -= np.power((y_true == uni).sum()/tot_true, 2)
-      cost_false -= np.power((y_false == uni).sum()/tot_false, 2)
+      count_true = (y_true == uni).sum()
+      count_false = (y_false == uni).sum()
+      cost_true -= np.power(count_true/tot_true, 2)
+      cost_false -= np.power(count_false/tot_false, 2)
 
     cost = tot_true/tot * cost_true + tot_false/tot * cost_false
     return cost
