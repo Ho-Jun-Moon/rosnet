@@ -1,4 +1,5 @@
 import numpy as np
+from .threshold_ import Threshold
 
 class TreeNode:
   def __init__(self, parent = None, left = None, right = None):

@@ -3,3 +3,5 @@ dist/
 rosnet.egg-info/
 Pipfile
 Pipfile.lock
+setup.py
+garage/

@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name="rosnet", 
-    version="0.0.1",
+    version="0.0.3",
     author="papamoon0113",
     author_email="papamoon0113@pusan.ac.kr",
     description="Causal discovery with ML",
