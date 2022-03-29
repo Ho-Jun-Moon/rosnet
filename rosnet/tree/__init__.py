@@ -1,4 +1,4 @@
 import numpy as np
 
-from .threshold_ import Threshold
-from .treenode_ import TreeNode
+from ._threshold import Threshold
+from ._treenode import TreeNode

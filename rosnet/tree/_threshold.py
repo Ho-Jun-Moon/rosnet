@@ -16,11 +16,13 @@ class Threshold:
     # 이 부분부터 y가 벡터로 고정이 되어 있다.
     tot_true = y_true.shape[0]
     tot_false = y_false.shape[0]
+    if tot_true * tot_false == 0: 
+      return 2
     tot = tot_true + tot_false
 
     for uni in np.unique(y):
-      count_true = (y_true == uni).sum()
-      count_false = (y_false == uni).sum()
+      count_true = np.sum(y_true == uni)
+      count_false = np.sum(y_false == uni)
       cost_true -= np.power(count_true/tot_true, 2)
       cost_false -= np.power(count_false/tot_false, 2)
 
