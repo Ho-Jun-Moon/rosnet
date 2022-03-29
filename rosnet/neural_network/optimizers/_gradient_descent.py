@@ -1,3 +1,5 @@
+import numpy as np
+
 class GD:
   def __init__(self, learning_rate = 0.001):
     self.learning_rate_ = learning_rate
@@ -33,6 +35,8 @@ class GD:
       Z_old = Z_new
 
     # Zs.append(Z_new) # 마지막 출력을 쓴다.
+    if len(Z_new) == 1:
+      Z_new = Z_new.reshape(-1,1)
 
     return Z_new, Ys, Zs
   

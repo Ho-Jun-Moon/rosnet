@@ -1,4 +1,6 @@
-from ._classes import (
+import numpy as np
+
+from ._gradient_descent import (
   GD
 )
 

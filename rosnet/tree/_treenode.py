@@ -21,7 +21,7 @@ class TreeNode:
   def add_right(self, right):
     self.right_ = right
   
-  def fit(self, x, y):
+  def fit(self, x, y, weights = None):
     except_col = range(len(y.shape))
     d = 0
     for col_max in x.shape:
@@ -74,11 +74,6 @@ class TreeNode:
       return self.threshold_.divide(x)
     else:
       return self.threshold_.divide(x, y)
-
-  # 나중에 causal discovery용으로 수정할 때 이 부분을 수정해야 한다.
-  def get_cost(self, x, y, uni, axis, except_col):
-    tot = x.shape[0]
-    # 일단 axis랑 uni로 데이터를 짤라 내야 한다.
 
   def __str__(self):
     return f"[Threshold_axis] : {self.threshold_.axis_[0]} [T_col] : {self.threshold_.col_} [T_unit] : {self.threshold_.unit_:.3f} [cost] : {self.cost_:.3f}"

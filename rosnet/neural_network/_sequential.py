@@ -25,9 +25,10 @@ class Sequential:
       output = self.layers[i-1].output_shape_
       self.layers[i].set_input(output)
 
-  def compile(self, loss, optimizer, metrics, batch_size=34, epochs=1,verbose=1, validation_split=0.0, early_stop = None):
+  def compile(self, loss, optimizer, metrics, batch_size=None, epochs=1,verbose=1, validation_split=0.0, early_stop = None, is_shuffle = True):
     
     self.metrics_ = {}
+    self.is_shuffle_ = is_shuffle
 
     if type(loss) == str:
       self.metrics_['loss'] = get_metrics(loss)()
@@ -59,8 +60,11 @@ class Sequential:
     self.early_stop_ = early_stop
     
   
-  def fit(self, x, y, batch_size=None, epochs=None,verbose=None, validation_split=None, early_stop = None):
+  def fit(self, x, y, batch_size=None, epochs=None,verbose=None, validation_split=None, early_stop = None, weights = None, is_shuffle = None):
     
+    if len(y.shape) == 1:
+      y = y.reshape(-1,1)
+
     if batch_size is None:
       batch_size = self.batch_size_
     if epochs is None:
@@ -71,6 +75,10 @@ class Sequential:
       validation_split = self.validation_split_
     if early_stop is None:
       early_stop = self.early_stop_
+    if weights is not None:
+      self.loss_.set_weight(weights)
+    if is_shuffle is None:
+      is_shuffle = self.is_shuffle_
 
     self.metrics_per_batch = {}
 
@@ -83,14 +91,20 @@ class Sequential:
        
     unit = int(x.shape[0] * validation_split)
     shuffle = np.arange(x.shape[0])
-    np.random.shuffle(shuffle)
+    if is_shuffle:
+      np.random.shuffle(shuffle)
     x_val = x[shuffle[:unit]]
     y_val = y[shuffle[:unit]]
     x_train = x[shuffle[unit:]]
     y_train = y[shuffle[unit:]]
 
     # epoch
-    steps = int(x_train.shape[0]//batch_size)
+    if batch_size is None:
+      batch_size = x_train.shape[0]
+      steps = 1
+    else:
+      steps = int(x_train.shape[0]//batch_size)
+
     for epoch in range(epochs):
 
       # 데이터 저장용으로 dictionary 하나 정의
@@ -100,33 +114,41 @@ class Sequential:
       # 매 epoch 마다 데이터를 섞어서 진행한다.
       shuffle = np.arange(x_train.shape[0])
       for step in range(steps):
-        if step == 0: np.random.shuffle(shuffle)
+        if step == 0 and is_shuffle: np.random.shuffle(shuffle)
         x_train_train = x_train[shuffle[batch_size*step : batch_size * (step + 1)]]
         y_train_train = y_train[shuffle[batch_size*step : batch_size * (step + 1)]]
         
         self.fit_(x_train_train, y_train_train)
-      if len(x_val) != 0 :
-        self.write_history(x_val, y_val)
+
+      self.write_history(x_val, y_val)
 
       if verbose > 0 and (epoch + 1)%verbose ==0:
         result = f"[Epoch {epoch}] " + str([f"{key} = {self.history_[key][-1]:.3f}" for key in self.history_.keys()])
         print(result)     
-
-    print("\n[Final]" + str([f"{key} = {self.history_[key][-1]:.3f}" for key in self.history_.keys()]))
+    if verbose > 0:
+      print("\n[Final]" + str([f"{key} = {self.history_[key][-1]:.3f}" for key in self.history_.keys()]))
 
   def fit_(self, x, y):
     self.layers, self.metrics_per_batch = self.optimizer_.fit(x, y, layers = self.layers, loss = self.loss_, metrics = self.metrics_, metrics_per_batch = self.metrics_per_batch)
 
   def write_history(self, x_val, y_val):
-    y_predict = self.predict(x_val)
-    for key in self.history_.keys():
-      if key[:3] == 'val':
-        met = self.metrics_[key[4:]].predict(y_predict, y_val)
-        self.history_[key].append(met)
-      else:
-        met = np.mean(self.metrics_per_batch[key])
-        self.history_[key].append(met)
-    
+    if len(x_val) != 0 :
+      y_predict = self.predict(x_val)
+      for key in self.history_.keys():
+        if key[:3] == 'val':
+          met = self.metrics_[key[4:]].predict(y_predict, y_val)
+          self.history_[key].append(met)
+        else:
+          met = np.mean(self.metrics_per_batch[key])
+          self.history_[key].append(met)
+    else:
+      for key in self.history_.keys():
+        if key[:3] == 'val':
+          continue
+        else:
+          met = np.mean(self.metrics_per_batch[key])
+          self.history_[key].append(met)
+
     self.metrics_per_batch = {}
 
   def predict(self, x):

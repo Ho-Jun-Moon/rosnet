@@ -14,7 +14,7 @@ class RELU:
 
 class SIGMOID:
   def predict(self, x): 
-    result = np.exp(-self.relu(x))/(1.0 + np.exp(-np.abs(x)))
+    result = np.exp(-self.relu(-x))/(1.0 + np.exp(-np.abs(x)))
     return result
   
   def relu(self, X):
@@ -23,6 +23,9 @@ class SIGMOID:
   def d(self, Y):
     result = self.predict(Y)*(1-self.predict(Y))
     return result
+
+    # result = np.ones(Y.shape)
+    # return result
 
   def __str__(self):
     return 'SIGMOID'

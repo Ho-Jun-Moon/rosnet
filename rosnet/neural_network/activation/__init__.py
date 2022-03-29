@@ -1,3 +1,5 @@
+import numpy as np
+
 from ._classes import (
     LINEAR,
     SIGMOID,
