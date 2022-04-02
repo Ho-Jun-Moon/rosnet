@@ -2,7 +2,7 @@
 
   
 
-🇰🇷 ‘***rosnet***’ 은 ML을 적용한 causal discovery 패키지입니다. 제 개인 연구를 위해 만들었지만, 다른 사람들도 최대한 사용하기 쉽도록 설계했습니다. 모든 코드는 혼자서 Numpy로 작성했습니다. 다만, 이용자의 편의를 위해 다른 패키지의 API 설계를 따라하긴 했습니다. 
+🇰🇷 ‘***rosnet***’ 은 ML을 적용한 causal discovery 패키지입니다. 제 개인 연구를 위해 만들었지만, 다른 사람들도 최대한 사용하기 쉽도록 설계했습니다. 모든 코드는 혼자서 Numpy로 작성했습니다. 다만, 이용자의 편의를 위해 다른 패키지의 API 설계를 따라하긴 했습니다. explanation 디렉토리에 설명하는 노트북 파일이 있습니다!
 
 🔠 ‘***rosnet’*** is causal discovery package applied ML . I made it for my personal study. But, it is designed to be used as easy for others as possible. I created all the codes by myself . However, for the user's convenience, I followed the API design of other packages.
   
