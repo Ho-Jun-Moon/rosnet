@@ -73,7 +73,7 @@ def build_model():
     layers.Dense(4)
   ])
 
-  optimizer = network.optimizers.SGD(0.001)
+  optimizer = network.optimizers.GD(0.001)
 
   model.compile(loss='mse',
                 optimizer=optimizer,
