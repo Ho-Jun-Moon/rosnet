@@ -1,101 +1,37 @@
-# rosnet (수정중!)
-
+# rosnet
   
+![Untitled](rosnet%20db546/Untitled.png)
 
-🇰🇷 ‘***rosnet***’ 은 ML을 적용한 causal discovery 패키지입니다. 제 개인 연구를 위해 만들었지만, 다른 사람들도 최대한 사용하기 쉽도록 설계했습니다. 모든 코드는 혼자서 Numpy로 작성했습니다. 다만, 이용자의 편의를 위해 다른 패키지의 API 설계를 따라하긴 했습니다. explanation 디렉토리에 설명하는 노트북 파일이 있습니다!
+**rosnet** 은 ML(Machine Learning) & NN(Neural Network) 패키지입니다. 제 연구 영역인 causal discovery에서 자유자재로 ML & NN을 사용하기 위해 구현했습니다. 
 
-🔠 ‘***rosnet’*** is causal discovery package applied ML . I made it for my personal study. But, it is designed to be used as easy for others as possible. I created all the codes by myself . However, for the user's convenience, I followed the API design of other packages.
-  
-  
-### 목적 / Purpose
+필요하면 그때 그때 만들어서 구현되지 않은 ML & NN 기법들이 많습니다. 특별한 목적이 없으시다면, scikit learn이나 keras 같은 대형 패키지 사용을 추천드립니다.
 
+### 특징
 
+- **scikit-learn, keras 와 유사한 API 구조**
+- **오직 Numpy 만으로 구현됨**
+    - 직접 구현하면서 공부하려는 목적도 있어서 Numpy만 사용했습니다.
 
-**🇰🇷 이 패키지의 목적은 다음과 같습니다 :**
+- **(계획) 텐서 중심의 알고리즘**
+    - 이 부분은 아직 제 공부가 모자라 제대로 하지 못하고 있습니다.
 
-- ML 알고리즘을 Causal discovery에 적용
-- 텐서 기반으로 기존 ML 알고리즘 재설계
-
-**🔠 The purpose of this package is as follows :**
-
-- Applying ML algorithm to Causal discovery
-- Re-engineering existing ML algorithm based on tensor
-  
-  
-### 설치 / Installment
-
-
+### 설치
 
 ```python
 !pip install rosnet
 ```
 
-**🔔 요구 패키지 / Required package**
+- 요구 패키지 : Numpy
 
-- numpy  
-  
-  
-### 사용법 / Manual
+### 사용법 및 구현 설명
 
+시간이 날 때마다 explanation에 노트북 파일로 구현 설명을 적고 있습니다. 혹 ML 구현에 관심이 있으시다면, 도움이 될지도 모르겠습니다.
 
+### 구현 Log
 
-🇰🇷 **이 패키지의 API는 *scikit-learn, keras* 와 거의 비슷합니다!** 
-
-- 오직 `fit` 과 `predict`, 두 개의 함수만 사용하시면 됩니다.
-
-🔠 **API of this package is just like *scikit-learn* and *keras*!**
-
-- You only need to use two functions: `fit` and `predict`.
-
- 
-  
-**예시 / Example** 
-
-```python
-# Multilayer Perceptron
-
-# **Notice** : I made some ML algorithm as needed, but not all of them.
-#          If you just want to use ML algorithm itself, 
-#          it is recommened to use other ML packages like scikit-learn, tensorflow ...
-
-from rosnet.neural_network import layers
-import rosnet.neural_network as network
-
-X_train = # Your code, numpy.narray expected 
-y_train = # Your code, numpy.narray expected
-
-def build_model():
-  model = network.Sequential([
-    layers.Dense(64, activation='relu', input_shape=(X_train.shape[1], )),
-    layers.Dense(64, activation='relu'),
-    layers.Dense(64, activation='relu'),
-    layers.Dense(64, activation='relu'),
-    layers.Dense(4)
-  ])
-
-  optimizer = network.optimizers.GD(0.001)
-
-  model.compile(loss='mse',
-                optimizer=optimizer,
-                metrics=['mae', 'mse'])
-  return model
-
-model = build_model()
-model.fit(X_train, y_train, 
-					epochs=100, 
-					batch_size = 1000, 
-					validation_split = 0.2, 
-					verbose = 0)
-```
-  
-  
-### 개발 기록 / Development log
-
-
-
-#### 0.0.1 - 22.03.26
-
-- **rosnet.neural_network**
-    - rosnet.neural_network.Sequential **add**
-    - rosnet.neural_network.layers **add**
-    - rosnet.neural_network.optimizers **add**
+- ~ `0.3.2`
+    - Basic NN 구현
+    - Tree 구현
+    - AdaBoost 구현
+    - Adam optimizer 구현
+    - 성능 측정에 필요한 Metrics 구현
