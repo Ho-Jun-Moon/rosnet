@@ -1,7 +1,5 @@
 # rosnet
   
-![Untitled](rosnet%20db546/Untitled.png)
-
 **rosnet** 은 ML(Machine Learning) & NN(Neural Network) 패키지입니다. 제 연구 영역인 causal discovery에서 자유자재로 ML & NN을 사용하기 위해 구현했습니다. 
 
 필요하면 그때 그때 만들어서 구현되지 않은 ML & NN 기법들이 많습니다. 특별한 목적이 없으시다면, scikit learn이나 keras 같은 대형 패키지 사용을 추천드립니다.
